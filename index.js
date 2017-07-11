@@ -1,6 +1,11 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var app = express();
-var port = 3000;
+var port = process.env.PORT || 3000;
+
+var config = require('./config/database.js');
+
+mongoose.connect(config.url)
 
 app.get('/',function(req,res){
     res.send('Hello');
